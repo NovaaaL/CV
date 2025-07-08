@@ -1,0 +1,613 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Ahmad Naufal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts - Poppins & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-color: #FFFFFF;
+            --heading-color: #2C3E50;
+            --accent-color: #00FFFF;
+            --caption-color: #6E6E6E;
+            --text-color: #333333;
+            --card-bg: #F8F8F8;
+            --timeline-line: #E0E0E0;
+        }
+
+        .dark-mode {
+            --background-color: #1A202C;
+            --heading-color: #E2E8F0;
+            --accent-color: #00FFFF;
+            --caption-color: #A0AEC0;
+            --text-color: #CBD5E0;
+            --card-bg: #2D3748;
+            --timeline-line: #4A5568;
+        }
+
+        body {
+            font-family: 'Inter', 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--heading-color);
+        }
+
+        .text-caption {
+            color: var(--caption-color);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--heading-color); /* Ensure contrast with vivid cyan */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #00DCDC; /* Slightly darker cyan on hover */
+            transform: translateY(-2px);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--timeline-line);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            border: 2px solid var(--background-color);
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+
+        .skill-grid-item {
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .skill-grid-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Dark mode specific styles for form */
+        .dark-mode input, .dark-mode textarea {
+            background-color: #4A5568;
+            color: #E2E8F0;
+            border-color: #2D3748;
+        }
+        .dark-mode input::placeholder, .dark-mode textarea::placeholder {
+            color: #A0AEC0;
+        }
+
+        /* Custom styles for experience card backgrounds */
+        .experience-card {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--card-bg); /* Fallback background */
+            border-radius: 0.5rem; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(50%) brightness(80%); /* Make image subtle */
+            opacity: 0.1; /* Adjust opacity for subtlety */
+            transition: opacity 0.3s ease;
+        }
+
+        .dark-mode .experience-card-bg {
+            filter: grayscale(70%) brightness(50%); /* More subtle in dark mode */
+            opacity: 0.08;
+        }
+
+        .experience-card-content {
+            position: relative;
+            z-index: 10; /* Ensure content is above background */
+            padding: 1.5rem; /* Padding for content */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white dark:bg-gray-800 shadow-md py-4 sticky top-0 z-50 transition-colors duration-300">
+        <nav class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
+            <a href="#home" class="text-2xl font-bold text-heading dark:text-gray-100">Ahmad Naufal</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#summary" class="text-caption hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors duration-200">Ringkasan</a>
+                <a href="#experience" class="text-caption hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors duration-200">Pengalaman</a>
+                <a href="#education" class="text-caption hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors duration-200">Pendidikan</a>
+                <a href="#skills" class="text-caption hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors duration-200">Skill</a>
+                <a href="#contact" class="text-caption hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors duration-200">Kontak</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <!-- Dark Mode Toggle -->
+                <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 focus:outline-none transition-colors duration-300">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+                <div class="md:hidden">
+                    <button id="mobileMenuButton" class="text-gray-700 dark:text-gray-200 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-800 py-4 px-4 shadow-lg">
+            <a href="#summary" class="block py-2 text-caption hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors duration-200">Ringkasan</a>
+            <a href="#experience" class="block py-2 text-caption hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors duration-200">Pengalaman</a>
+            <a href="#education" class="block py-2 text-caption hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors duration-200">Pendidikan</a>
+            <a href="#skills" class="block py-2 text-caption hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors duration-200">Skill</a>
+            <a href="#contact" class="block py-2 text-caption hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors duration-200">Kontak</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Hero Section -->
+        <section id="home" class="flex flex-col md:flex-row items-center justify-center text-center md:text-left min-h-screen-75 py-16 animate-fade-in">
+            <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 text-heading dark:text-gray-100">
+                    Halo, saya <span class="text-accent">Ahmad Naufal</span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-caption mb-6">
+                    Seorang profesional Customer Support Logistics dengan pengalaman lebih dari 5 tahun.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="Ahmad Naufal CV.pdf" download class="btn-primary px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl">
+                        <i class="fas fa-download mr-2"></i> Download CV (PDF)
+                    </a>
+                    <a href="#contact" class="border-2 border-accent text-accent px-8 py-3 rounded-lg font-semibold hover:bg-accent hover:text-heading transition-colors duration-300 shadow-lg hover:shadow-xl">
+                        Hubungi Saya
+                    </a>
+                </div>
+                <div class="mt-8 flex justify-center md:justify-start space-x-6 text-2xl">
+                    <a href="https://www.linkedin.com/in/ahmad-naufal-4aa490137" target="_blank" class="text-caption hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors duration-200" aria-label="LinkedIn Profile">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <!-- Placeholder for GitHub/Portfolio if available -->
+                    <!-- <a href="#" target="_blank" class="text-caption hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors duration-200" aria-label="GitHub Profile">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" target="_blank" class="text-caption hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors duration-200" aria-label="Portfolio">
+                        <i class="fas fa-globe"></i>
+                    </a> -->
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center md:justify-end">
+                <!-- Updated image source to use the uploaded file -->
+                <img src="Poto Nopal.jpg-f54aa8d9-bee3-4ccc-a0d0-cbe17457e0a1" alt="Ahmad Naufal Profile" class="rounded-full shadow-xl w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-cover border-4 border-accent animate-fade-in-delay">
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section id="summary" class="py-16 fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-center text-heading dark:text-gray-100">Ringkasan</h2>
+            <div class="bg-card-bg dark:bg-gray-700 p-6 sm:p-8 rounded-lg shadow-md text-center max-w-3xl mx-auto transition-colors duration-300">
+                <p class="text-lg text-text-color dark:text-gray-300 leading-relaxed">
+                    Profesional Customer Support Logistics yang berorientasi pada hasil dengan pengalaman lebih dari lima tahun di industri logistik dan pengiriman. Keahlian meliputi penanganan pertanyaan penjual dan pemasok, pengelolaan masalah pengiriman, dan kolaborasi dengan berbagai tim untuk menyelesaikan kasus-kasus kompleks. Terbukti mampu memimpin tim, meningkatkan kualitas layanan, dan menyiapkan laporan rinci untuk manajemen. Terampil dalam pemrosesan data dan memastikan keberhasilan operasional dalam kegiatan pengiriman.
+                </p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-16 fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center text-heading dark:text-gray-100">Pengalaman</h2>
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Timeline Line -->
+                <div class="absolute left-4 sm:left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-timeline-line"></div>
+
+                <!-- Experience Item 1: Customer Support Logistic -->
+                <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                    <div class="order-1 w-full sm:w-5/12 sm:pr-8 text-right fade-in">
+                        <div class="experience-card">
+                            <!-- Background Image for Customer Support Logistic -->
+                            <div class="experience-card-bg" style="background-image: url('https://placehold.co/600x400/87CEEB/FFFFFF?text=Logistics');"></div>
+                            <div class="experience-card-content">
+                                <h3 class="text-xl font-semibold text-heading dark:text-gray-100">Customer Support Logistic</h3>
+                                <p class="text-accent text-sm mb-2">OrderOnline.id - PT Ordivo Teknologi Indonesia</p>
+                                <p class="text-caption text-xs mb-4">Oktober 2023 - Juni 2025, Jakarta, Indonesia (Hybrid)</p>
+                                <ul class="list-disc list-inside text-text-color dark:text-gray-300 text-left space-y-2">
+                                    <li>Mengelola pertanyaan dari penjual dan pemasok terkait masalah pengiriman.</li>
+                                    <li>Bekerja sama dengan tim pemasok dan pengembangan bisnis untuk menyelesaikan tantangan logistik.</li>
+                                    <li>Berkoordinasi dengan tim control tower dan klaim untuk menangani penyesuaian biaya pengiriman untuk kasus-kasus tertentu.</li>
+                                    <li>Berhasil menyelesaikan status pengiriman (Delivered, Returned, Claimed) untuk periode Agustus-Desember 2024.</li>
+                                    <li>Diakui sebagai karyawan teladan atas manajemen data dan keterampilan analitis yang luar biasa yang berkontribusi pada penyederhanaan saluran komunikasi dan peningkatan efisiensi penyelesaian perbedaan pengiriman.</li>
+                                    <li>Memantau akurasi pengiriman lebih dari 3.200+ paket mingguan menggunakan SAP Logistics dan alat pelacakan Excel selama periode 5 bulan, mengurangi kesalahan pengiriman sebesar 18% dan mendukung peningkatan berkelanjutan KPI pemenuhan pesanan end-to-end.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 sm:w-1/12"></div>
+                </div>
+
+                <!-- Experience Item 2: Team Leader Special Service Department Corporate -->
+                <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                    <div class="order-1 w-full sm:w-5/12 sm:pl-8 text-left fade-in">
+                        <div class="experience-card">
+                            <!-- Background Image for Team Leader -->
+                            <div class="experience-card-bg" style="background-image: url('https://placehold.co/600x400/90EE90/FFFFFF?text=Leadership');"></div>
+                            <div class="experience-card-content">
+                                <h3 class="text-xl font-semibold text-heading dark:text-gray-100">Team Leader Special Service Department Corporate</h3>
+                                <p class="text-accent text-sm mb-2">SICEPAT EKSPRES INDONESIA</p>
+                                <p class="text-caption text-xs mb-4">Juli 2021 - Juni 2023, Central Jakarta, Jakarta, Indonesia</p>
+                                <ul class="list-disc list-inside text-text-color dark:text-gray-300 text-left space-y-2">
+                                    <li>Mengawasi dan membimbing tim yang terdiri dari 10 staf untuk meningkatkan efisiensi operasional dan kualitas layanan.</li>
+                                    <li>Berkontribusi pada pengembangan KPI tim dan pembuatan laporan otomatisasi, mengurangi proses manual hingga 50%.</li>
+                                    <li>Menyiapkan data operasional untuk laporan bulanan dan mempresentasikan wawasan kepada manajemen.</li>
+                                    <li>Berkoordinasi dengan tim keuangan dan penjualan untuk rekonsiliasi data dan berkoordinasi dengan tim klaim untuk menyelesaikan kasus revisi biaya pengiriman.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 sm:w-1/12"></div>
+                </div>
+
+                <!-- Experience Item 3: Staff Special Service Department Corporate -->
+                <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                    <div class="order-1 w-full sm:w-5/12 sm:pr-8 text-right fade-in">
+                        <div class="experience-card">
+                            <!-- Background Image for Staff Special Service -->
+                            <div class="experience-card-bg" style="background-image: url('https://placehold.co/600x400/FFD700/FFFFFF?text=Customer+Service');"></div>
+                            <div class="experience-card-content">
+                                <h3 class="text-xl font-semibold text-heading dark:text-gray-100">Staff Special Service Department Corporate</h3>
+                                <p class="text-accent text-sm mb-2">SICEPAT EKSPRES INDONESIA</p>
+                                <p class="text-caption text-xs mb-4">Oktober 2019 - Juni 2021, Indonesia</p>
+                                <ul class="list-disc list-inside text-text-color dark:text-gray-300 text-left space-y-2">
+                                    <li>Mengelola hubungan pelanggan B2B bernilai tinggi dan menyediakan layanan yang disesuaikan.</li>
+                                    <li>Mengawasi 10 klien B2B utama, memastikan kebutuhan spesifik mereka terpenuhi.</li>
+                                    <li>Menyampaikan laporan pengiriman harian melalui email dan grup WhatsApp, menjaga transparansi.</li>
+                                    <li>Menangani keluhan pelanggan melalui email dan WhatsApp, meningkatkan kepuasan.</li>
+                                    <li>Berpartisipasi dalam pertemuan bulanan dengan tim penjualan dan pelanggan untuk membahas umpan balik dan strategi.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 sm:w-1/12"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-16 fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-center text-heading dark:text-gray-100">Pendidikan & Sertifikasi</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Education Card -->
+                <div class="bg-card-bg dark:bg-gray-700 p-6 rounded-lg shadow-md transition-colors duration-300">
+                    <h3 class="text-xl font-semibold text-heading dark:text-gray-100 mb-2">Diploma III, Teknik Komputer</h3>
+                    <p class="text-accent text-sm mb-1">Universitas Bina Sarana Informatika Depok, West Java</p>
+                    <p class="text-caption text-xs mb-4">Lulus: Mei 2015 | Tanggal Kelulusan: 21 September 2015</p>
+                    <ul class="list-disc list-inside text-text-color dark:text-gray-300 space-y-1">
+                        <li>Minor: Matematika</li>
+                        <li>IPK: 2.87</li>
+                        <li>Judul Tugas Akhir: ANALISA LAN DI KEMENTERIAN PERTANIAN</li>
+                    </ul>
+                </div>
+
+                <!-- Certifications Card -->
+                <div class="bg-card-bg dark:bg-gray-700 p-6 rounded-lg shadow-md transition-colors duration-300">
+                    <h3 class="text-xl font-semibold text-heading dark:text-gray-100 mb-2">Sertifikasi</h3>
+                    <ul class="list-disc list-inside text-text-color dark:text-gray-300 space-y-2">
+                        <li>EF SET English Certificate 62/100 (C1 Advance) - <span class="text-accent">EF SET</span></li>
+                        <li>MySkill Certificate of Skill Specialization - Microsoft Excel Intermediate (Selesai: 17 Juli 2023) - <span class="text-accent">MySkill</span></li>
+                    </ul>
+                    <h3 class="text-xl font-semibold text-heading dark:text-gray-100 mt-6 mb-2">Kursus</h3>
+                    <ul class="list-disc list-inside text-text-color dark:text-gray-300 space-y-2">
+                        <li>Data Wrangling Python</li>
+                        <li>Fundamental SQL Using FUNCTION and Group By</li>
+                        <li>Fundamental SQL Using SELECT Statement</li>
+                        <li>Python Fundamental for Data Science</li>
+                        <li>Python for Data Professional Beginner - Part 1</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-16 fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-center text-heading dark:text-gray-100">Keterampilan</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold text-heading dark:text-gray-100 mb-4">Pengetahuan Industri</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="skill-grid-item">
+                            <i class="fas fa-handshake text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">CRM</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-headset text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Customer Support</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-smile text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Customer Experience</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-chart-line text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Data Science</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-chart-bar text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Data Analytics</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-phone-volume text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Contact Centers</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-database text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Data Analysis</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-user-friends text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Customer Service</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-video text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Video Editing</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-comments text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Social Listening</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-keyboard text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Data Entry</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-cogs text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Customer Service Mgmt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold text-heading dark:text-gray-100 mb-4">Alat & Teknologi</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="skill-grid-item">
+                            <i class="fas fa-server text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">MySQL</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-file-excel text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Microsoft Excel</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-truck-loading text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">SAP Logistics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold text-heading dark:text-gray-100 mb-4">Keterampilan Interpersonal</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="skill-grid-item">
+                            <i class="fas fa-people-carry text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Collaborative Problem Solving</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-comments text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Communication</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-handshake-alt-slash text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Negotiation</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-users text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Team Motivation</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-people-group text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Teamwork</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-crown text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Leadership</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-brain text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Analytical Skills</span>
+                        </div>
+                        <div class="skill-grid-item">
+                            <i class="fas fa-lightbulb text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">Problem Solving</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-heading dark:text-gray-100 mb-4">Bahasa</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="skill-grid-item">
+                            <i class="fas fa-language text-accent text-3xl mb-2"></i>
+                            <span class="text-text-color dark:text-gray-300 text-sm">English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 fade-in">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-center text-heading dark:text-gray-100">Hubungi Saya</h2>
+            <div class="max-w-3xl mx-auto bg-card-bg dark:bg-gray-700 p-6 sm:p-8 rounded-lg shadow-md transition-colors duration-300">
+                <p class="text-lg text-text-color dark:text-gray-300 text-center mb-6">
+                    Tertarik untuk berkolaborasi atau ingin tahu lebih banyak? Silakan hubungi saya!
+                </p>
+                <div class="flex flex-col md:flex-row items-center justify-center mb-8 space-y-4 md:space-y-0 md:space-x-8">
+                    <div class="flex items-center text-text-color dark:text-gray-300">
+                        <i class="fas fa-phone-alt text-accent text-xl mr-3"></i>
+                        <span>+6282298164473</span>
+                    </div>
+                    <div class="flex items-center text-text-color dark:text-gray-300">
+                        <i class="fas fa-envelope text-accent text-xl mr-3"></i>
+                        <span>valgeeks@gmail.com</span>
+                    </div>
+                    <a href="https://www.linkedin.com/in/ahmad-naufal-4aa490137" target="_blank" class="flex items-center text-text-color dark:text-gray-300 hover:text-accent transition-colors duration-200">
+                        <i class="fab fa-linkedin text-accent text-xl mr-3"></i>
+                        <span>LinkedIn Profile</span>
+                    </a>
+                </div>
+
+                <form action="https://formspree.io/f/yourformid" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-text-color dark:text-gray-300 mb-2">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" required class="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600 focus:ring-accent focus:border-accent bg-white dark:bg-gray-800 text-text-color dark:text-gray-100 transition-colors duration-300">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-text-color dark:text-gray-300 mb-2">Email Anda</label>
+                        <input type="email" id="email" name="email" required class="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600 focus:ring-accent focus:border-accent bg-white dark:bg-gray-800 text-text-color dark:text-gray-100 transition-colors duration-300">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-text-color dark:text-gray-300 mb-2">Pesan Anda</label>
+                        <textarea id="message" name="message" rows="5" required class="w-full p-3 rounded-md border border-gray-300 dark:border-gray-600 focus:ring-accent focus:border-accent bg-white dark:bg-gray-800 text-text-color dark:text-gray-100 transition-colors duration-300"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full py-3 rounded-md font-semibold shadow-lg hover:shadow-xl">Kirim Pesan</button>
+                </form>
+
+                <div class="mt-8 text-center">
+                    <p class="text-caption mb-4">Pindai QR Code untuk terhubung di LinkedIn:</p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.linkedin.com/in/ahmad-naufal-4aa490137" alt="LinkedIn QR Code" class="mx-auto border-2 border-accent rounded-lg shadow-md">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 py-8 text-center shadow-inner transition-colors duration-300">
+        <p class="text-caption dark:text-gray-400">&copy; 2025 Ahmad Naufal. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu if open
+                if (mobileMenu.classList.contains('block')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('block');
+                }
+            });
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark-mode');
+        } else {
+            html.classList.remove('dark-mode');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            if (html.classList.contains('dark-mode')) {
+                html.classList.remove('dark-mode');
+                localStorage.theme = 'light';
+            } else {
+                html.classList.add('dark-mode');
+                localStorage.theme = 'dark';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('block');
+        });
+
+        // Fade-in animation on scroll
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -100px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('appear');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        // Add specific class for timeline items to trigger animation
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach(item => {
+            item.classList.add('fade-in');
+        });
+
+        // Ensure the hero section appears immediately
+        document.querySelector('#home').classList.add('appear');
+    </script>
+</body>
+</html>
